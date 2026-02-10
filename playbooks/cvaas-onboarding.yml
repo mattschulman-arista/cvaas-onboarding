@@ -6,6 +6,7 @@
   vars:
     # cvaas_url:  www.cv-staging.corp.arista.io
     cvaas_url:  www.arista.io
+    cvaas_api_url: apiserver.arista.io
     # service account token for CVaaS
     cvaas_service_token: "{{lookup('file', '../cvaas-service.tok')}}"
 
@@ -41,11 +42,11 @@
 
 
 - name: Onboard devices to CVaaS
-  hosts: VEOS                                  # Change to your value from inventory file
+  hosts: all                                  # Change to your value from inventory file
   gather_facts: false
   vars:
-    ansible_user: <username>                   # Change to a valid username on EOS devices
-    ansible_password: <password>           # Change to a valid password on EOS devices
+    ansible_user: arista                    # Change to a valid username on EOS devices
+    ansible_password: arista           # Change to a valid password on EOS devices
     ansible_connection: httpapi
     ansible_httpapi_use_ssl: True
     ansible_httpapi_validate_certs: False
@@ -76,7 +77,7 @@
           - "configure"
           - "daemon TerminAttr"
           - "shutdown"
-          - "exec /usr/bin/TerminAttr -cvaddr=apiserver.cv-staging.corp.arista.io:443 -cvauth=token-secure,/tmp/cv-onboarding-token -cvvrf={{terminattr_vrf}} -disableaaa -smashexcludes=ale,flexCounter,hardware,kni,pulse,strata -ingestexclude=/Sysdb/cell/1/agent,/Sysdb/cell/2/agent -taillogs"
+          - "exec /usr/bin/TerminAttr -cvaddr=apiserver.{{cvaas_api_url}}:443 -cvauth=token-secure,/tmp/cv-onboarding-token -cvvrf={{terminattr_vrf}} -smashexcludes=ale,flexCounter,hardware,kni,pulse,strata -ingestexclude=/Sysdb/cell/1/agent,/Sysdb/cell/2/agent -taillogs -disableaaa"
           - "no shutdown"
           format: json
           timestamps: false
