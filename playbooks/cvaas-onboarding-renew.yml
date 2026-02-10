@@ -6,7 +6,7 @@
   gather_facts: false
   vars:
     # cvaas_url:  www.cv-staging.corp.arista.io
-    cvaas_url:  www.arista.io
+    cvaas_url: www.cv-prod-us-central1-c.arista.io         # Change to your CVaaS URL
     # service account token for CVaaS
     cvaas_service_token: "{{lookup('file', '../cvaas-service.tok')}}"
 
@@ -52,8 +52,9 @@
     ansible_httpapi_validate_certs: False
     ansible_network_os: eos
     ansible_httpapi_port: 443
-    ansible_python_interpreter: $(which python3) 
-    terminattr_vrf: MGMT                     # Change this if TerminiAttr needs to use another VRF
+    ansible_python_interpreter: $(which python3)
+    # cvaas_api_url: apiserver.arista.io
+    # terminattr_vrf: MGMT                     # Change this if TerminiAttr needs to use another VRF
   tasks:
   - name: "Copy onboarding token and start the TerminAttr daemon"
     tags: [onboard]

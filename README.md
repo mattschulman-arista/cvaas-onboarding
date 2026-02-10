@@ -31,7 +31,8 @@ There are three playbooks in the playbooks folder:
 4. Edit the playbook and update: 
     - `cvaas_url:` variable to be your CVaaS instance url
     - `cvaas_api_url` - variable to be the CVaaS URL in terminAttr. ie `apiserver.arista.io`
-    - `cvp_url:` variable to be your CVP  url/IP
+    - `cvp_url:` - variable to be your CVP  url/IP
+    - `cvp_api_url` - variable to be your CVP url/IP
     - `ansible_user:` and `ansible-password:` variables with credentials for the eAPI call to the EOS device
     - `terminattr_vrf` - VRF to use to communicate with CVaaS (default if no VRF is used)
     - On the `hosts:` line after the `"- name: Onboard devices to CVaaS and on-prem"` line, change it to the inventory group to use (if not all devices)
