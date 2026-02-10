@@ -1,7 +1,7 @@
 # Purpose
 Playbooks to onboard an EOS device onto CVaaS.
 
-There are two playbooks in the playbooks folder:
+There are three playbooks in the playbooks folder:
 - **cvaas-onboarding.yml** - will connect to CVaaS, create an onboarding token, upload the token to flash on the EOS device(s), and then configure termiAttr
 - **cvaas-onboarding-renew.yml** - will connect to CVaaS, create an onboarding token, upload the token to flash on the EOS device(s), and then restart terminAttr.  Thi
     - Useful for an EOS device that was offline when the certificates used to authenticate TerminAttr expire, and couldn't be renewed.
