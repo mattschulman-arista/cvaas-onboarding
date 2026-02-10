@@ -55,3 +55,6 @@ all:
       leaf2:
         ansible_host: <ip>
 ```
+
+# Useful playbooks for doing a On-prem to CVaaS migration:
+[cvaas-migration](https://github.com/arista-netdevops-community/cvaas-migration/tree/main)
