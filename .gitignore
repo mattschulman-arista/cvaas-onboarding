@@ -5,3 +5,4 @@ onprem.tok
 inventory*.yml
 cvp_to_cvaas_Lab_inventory.yml
 .history/
+.DS_Store
